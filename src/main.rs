@@ -1,25 +1,30 @@
 use std::io;
 
-struct Reactangle {
-    width: u32,
-    height: u32,
-}
+mod back_of_house {
+    pub struct Breakfast {
+        pub toast: String,
+        pub seasonal_fruit: String,
+    }
 
-impl Reactangle {
-    fn area(&self) -> u32 {
-        self.width * self.height
+    impl Breakfast {
+        pub fn summer(toast: &str) -> Breakfast {
+            Breakfast {
+                toast: String::from(toast),
+                seasonal_fruit: String::from("peaches"),
+            }
+        }
     }
 }
 
-fn main() {
-    let react1 = Reactangle {
-        width: 30,
-        height: 20,
-    };
-
-    println!("This area of rectangle is {} pixels", react1.area());
+pub fn eat_at_restaurant() {
+    let mut meal = back_of_house::Breakfast::summer("Rye");
+    // meal.toast = String::from("wheat");
+    println!("{}", meal.toast);
 }
 
+pub fn main() {
+    crate::eat_at_restaurant();
+}
 // fn area(react1: Reactangle) -> u32 {
 //     width * height
 // }
